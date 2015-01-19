@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 Blank. All rights reserved.
 //
 
-#import "UIColor+Hex.h"
+#import "UIColor+Helpers.h"
 
-@implementation UIColor (Hex)
+@implementation UIColor (Helpers)
 
 + (UIColor *)colorWithHexString:(NSString *)stringToConvert alpha:(float)alpha
 {
@@ -56,5 +56,27 @@
 {
 	return [self colorWithHexString:stringToConvert alpha:1.0f];
 }
+
+- (UIColor *)darkerColorWithBrightness:(CGFloat)brightness
+{
+    CGFloat h, s, b, a;
+    
+    if ([self getHue:&h saturation:&s brightness:&b alpha:&a]) {
+        return [UIColor colorWithHue:h saturation:s brightness:b * brightness alpha:a];
+    }
+    
+    return self;
+}
+
+- (UIColor *)lighterWithColorWithBrightness:(CGFloat)brightness
+{
+    CGFloat r, g, b, a;
+    if ([self getRed:&r green:&g blue:&b alpha:&a]) {
+        return [UIColor colorWithRed:MIN(r + brightness, 1.0) green:MIN(g + brightness, 1.0) blue:MIN(b + brightness, 1.0) alpha:a];
+    }
+    
+    return self;
+}
+
 
 @end

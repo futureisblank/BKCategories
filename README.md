@@ -1,15 +1,15 @@
 BKCategories is a collection of categories for a quick start.
 
 ## Usage
-- UIColor+Hex
+- UIColor+Helpers
 - UIView+Position
 
-### Prefix header (Appname-Prefix.pch)
+### Prefix header (Prefix.pch)
 ```
 #ifdef __OBJC__
     ...
     #import "UIView+Position.h"
-    #import "UIColor+Hex.h"
+    #import "UIColor+Helpers.h"
 	...
 #endif
 ```
